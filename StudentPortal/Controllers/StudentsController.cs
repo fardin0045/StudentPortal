@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using StudentPortal.Data;
 using StudentPortal.Models;
 using StudentPortal.Models.Entites;
@@ -18,7 +19,7 @@ namespace StudentPortal.Controllers
             return View();
         }
         [HttpPost]
-        public async  Task<IActionResult> Add(AddStudentViewModel viewModel)
+        public async Task<IActionResult> Add(AddStudentViewModel viewModel)
         {
             var student = new Student
             {
@@ -30,6 +31,13 @@ namespace StudentPortal.Controllers
             await dbContext.Students.AddAsync(student);
             await dbContext.SaveChangesAsync();
             return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> List()
+        {
+            var students = await dbContext.Students.ToListAsync();
+            return View(students);
         }
     }
 }
