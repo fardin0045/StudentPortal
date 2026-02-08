@@ -1,5 +1,11 @@
 ﻿@model StudentPortal.Models.AddCourseViewModel;
-
+@if (TempData["Successmessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"];
+        <button type="button" class="btn btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
 <h1>Add Courses </h1>
 <form method="post" > 
     <div class="container mt-3">

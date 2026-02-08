@@ -1,0 +1,26 @@
+﻿@model List<StudentPortal.Models.Entites.Courses>
+
+<h1>All Course</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th># </th>
+            <th>Course Name </th>
+            <th>Course Code</th>
+            <th>Course Credit</th>
+            <th>Actions </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var course in Model)
+        {
+            <tr class=" table-borderless">
+                <td>@course.Id<td>
+                <td>@course.CourseName<td>
+                <td>@course.CourseCode<td>
+                <td>@course.Credit <td>
+            </tr>
+        }
+    </tbody>
+</table>
