@@ -1,29 +1,56 @@
-﻿@model StudentPortal.Models.AddCourseViewModel;
-@if (TempData["Successmessage"] != null)
-{
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        @TempData["SuccessMessage"];
-        <button type="button" class="btn btn-close" data-bs-dismiss="alert"></button>
-    </div>
-}
-<h1>Add Courses </h1>
-<form method="post" > 
-    <div class="container mt-3">
-        <label class="form-label">Course Name </label>
-        <input type="text" class="form-control" asp-for="CourseName"/>
-    </div>
-    <div class="container mt-3">
-        <label class="form-label">Course Code </label>
-        <input type="text" class="form-control" asp-for="CourseCode" />
-    </div>
-    <div class="container mt-3">
-        <label class="form-label">Course Credit </label>
-        <input type="text" class="form-control" asp-for="Credit" />
-    </div>
-    <div class="mt-3"> 
-        <button type="submit" class="btn btn-outline-secondary" >
-            Save 
-        </button>
+﻿@model StudentPortal.Models.AddCourseViewModel
 
+<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <!-- ===== Card Form ===== -->
+    <div class="card shadow-lg border-0 rounded-4 w-50">
+        <div class="card-header bg-primary text-white rounded-top-4 text-center">
+            <h2 class="mb-0">Add New Course</h2>
+        </div>
+        <div class="card-body p-4">
+
+            <!-- ===== Success Alert ===== -->
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
+                    <strong>Success!</strong> @TempData["SuccessMessage"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+
+            <form method="post" novalidate>
+                <!-- Course Name -->
+                <div class="form-floating mb-3">
+                    <input asp-for="CourseName" class="form-control" />
+                    <label asp-for="CourseName">Course Name</label>
+                    <span class="text-danger" asp-validation-for="CourseName"></span>
+                </div>
+
+                <!-- Course Code -->
+                <div class="form-floating mb-3">
+                    <input asp-for="CourseCode" class="form-control" />
+                    <label asp-for="CourseCode">Course Code</label>
+                    <span class="text-danger" asp-validation-for="CourseCode"></span>
+                </div>
+
+                <!-- Course Credit -->
+                <div class="form-floating mb-3">
+                    <input asp-for="Credit" type="number" class="form-control" />
+                    <label asp-for="Credit">Course Credit</label>
+                    <span class="text-danger" asp-validation-for="Credit"></span>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="d-grid mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg shadow-sm">
+                        <i class="bi bi-plus-circle me-2"></i> Save Course
+                    </button>
+                </div>
+            </form>
+
+        </div>
     </div>
-</form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -13,10 +13,13 @@
         </tr>
     </thead>
     <tbody>
+        @{
+            int counter = 1;
+        }
         @foreach(var course in Model)
         {
             <tr class=" table-borderless">
-                <td>@course.Id</td>
+                <td>@counter</td>
                 <td>@course.CourseName</td>
                 <td>@course.CourseCode</td>
                 <td>@course.Credit </td>
@@ -26,6 +29,7 @@
                     
                 </td>
             </tr>
+            counter++;
         }
     </tbody>
 </table>

@@ -51,5 +51,24 @@ namespace StudentPortal.Controllers
             var course = await dbContext.Courses.FindAsync(id);
             return View(course);
         }
+        [HttpPost]
+        public async Task<IActionResult> Edit (Courses viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+            var course = await dbContext.Courses.FindAsync(viewModel.Id);
+            if(course != null)
+            {
+                course.CourseName = viewModel.CourseName;
+                course.CourseCode = viewModel.CourseCode;
+                course.Credit = viewModel.Credit;
+
+                await dbContext.SaveChangesAsync ();
+            }
+            TempData["SuccessMessage"] = "Course Update Successfully";
+            return RedirectToAction("List", "Course");
+        }
     }
 }
