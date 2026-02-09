@@ -70,5 +70,17 @@ namespace StudentPortal.Controllers
             TempData["SuccessMessage"] = "Course Update Successfully";
             return RedirectToAction("List", "Course");
         }
+        public async Task<IActionResult> Delete(Courses viewModel)
+        {
+            var course = await dbContext.Courses.FindAsync (viewModel.Id);
+            if(course is not null)
+            {
+                dbContext.Courses.Remove(course);
+                await dbContext.SaveChangesAsync();
+                TempData["Success Message"] = "Deleted Successfully 🗑️";
+
+            }
+            return RedirectToAction("List", "Course");
+        }
     }
 }
