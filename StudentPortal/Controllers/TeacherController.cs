@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using StudentPortal.Data;
 using StudentPortal.Models;
 using StudentPortal.Models.Entites;
@@ -38,6 +39,12 @@ namespace StudentPortal.Controllers
             TempData["Success message"] = "Teacher Added Succssfully";
 
             return RedirectToAction("Add");
+        }
+        [HttpGet]
+        public async Task<IActionResult> List()
+        {
+            var teacher = await dbContext.Teachers.ToListAsync();
+            return View(teacher);
         }
         
     }
