@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StudentPortal.Data;
+using StudentPortal.Models;
+using StudentPortal.Models.Entites;
 
 namespace StudentPortal.Controllers
 {
@@ -17,6 +19,26 @@ namespace StudentPortal.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public async Task<IActionResult> Add(AddTeacherViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+            var teacher = new Teachers
+            {
+                TeacherName = viewModel.TeacherName,
+                TeacherEmail = viewModel.TeacherEmail,
+                TeacherPhone = viewModel.TeacherPhone
+            };
+            await dbContext.Teachers.AddAsync(teacher);
+            await dbContext.SaveChangesAsync();
 
+            TempData["Success message"] = "Teacher Added Succssfully";
+
+            return RedirectToAction("Add");
+        }
+        
     }
 }

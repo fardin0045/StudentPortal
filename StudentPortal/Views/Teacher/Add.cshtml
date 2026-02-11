@@ -1,5 +1,12 @@
 ﻿@model StudentPortal.Models.AddTeacherViewModel;
 
+@if(TempData["Succesas Message"] != null)
+{
+    <div>
+        @TempData["Success Message"];
+    </div>
+}
+
 <div class="d-flex justify-content-center align-items-center " >
     <form method="post" class="card shadow p-2" style="width:500px">
 

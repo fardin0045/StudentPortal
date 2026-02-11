@@ -11,5 +11,6 @@ namespace StudentPortal.Data
         }
         public DbSet<Student> Students{ get; set; }
         public DbSet<Courses> Courses { get; set; }
+        public DbSet<Teachers> Teachers { get; set; }
     }
 }
