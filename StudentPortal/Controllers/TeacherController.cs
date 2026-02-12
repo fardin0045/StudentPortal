@@ -63,7 +63,12 @@ namespace StudentPortal.Controllers
             {
                 teacher.TeacherName = viewModel.TeacherName;
                 teacher.TeacherEmail = viewModel.TeacherEmail;
+                teacher.TeacherPhone = viewModel.TeacherPhone;
             }
+            await dbContext.SaveChangesAsync();
+            TempData["Success Message"] = "Changed successfully";
+
+            return RedirectToAction("List", "Teacher");
         }
     }
 }
