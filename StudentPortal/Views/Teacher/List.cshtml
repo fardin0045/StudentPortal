@@ -30,7 +30,7 @@
                 <td>@teacher.TeacherEmail</td>
                 <td>@teacher.TeacherPhone</td>
                 <td class="d-flex gap-2" >
-                    <a class="btn btn-outline-light text-bg-dark " asp-controller="Teacher" asp-action="Edit" asp-route-id="@teacher.Id">Edit</a>
+                    <a class="btn btn-outline-danger text-bg-dark " asp-controller="Teacher" asp-action="Edit" asp-route-id="@teacher.Id">Edit</a>
                     <form asp-controller="Teacher"
                     asp-action="Delete"
                     asp-route-id="@teacher.Id"
