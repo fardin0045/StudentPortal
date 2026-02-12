@@ -1,5 +1,37 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@model StudentPortal.Models.Entites.Teachers;
+
+@if(Model is null)
+{
+    <h1> No Teahcer found </h1>
 }
+else
+{
+    <div class="d-flex justify-content-center align-items-center ">
+        <form method="post" class="card shadow p-2" style="width:500px">
+
+            <div class="container mt-2">
+                <label class="form-label">Teacher Name</label>
+                <input type="text" class="form-control" asp-for="Id" readonly/>
+            </div>
+            <div class="container mt-2">
+                <label class="form-label">Teacher Name</label>
+                <input type="text" class="form-control" asp-for="TeacherName" />
+            </div>
+            <div class="container mt-2">
+                <label class="form-label">Teacher Email</label>
+                <input type="email" class="form-control" asp-for="TeacherEmail" />
+            </div>
+            <div class="container mt-2">
+                <label class="form-label">Teacher Phone</label>
+                <input type="number" class="form-control" asp-for="TeacherPhone" />
+            </div>
+            <div class="container mt-2">
+                <button class="btn btn-outline-danger ">Save</button>
+            </div>
+
+        </form>
+
+    </div>
+
+}
+

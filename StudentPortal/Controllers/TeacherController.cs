@@ -46,6 +46,11 @@ namespace StudentPortal.Controllers
             var teacher = await dbContext.Teachers.ToListAsync();
             return View(teacher);
         }
-        
+        [HttpGet]
+        public async Task<IActionResult> Edit(Guid id)
+        {
+            var teacher = await dbContext.Teachers.FindAsync(id);
+            return View(teacher);
+        }
     }
 }
