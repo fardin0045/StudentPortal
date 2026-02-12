@@ -52,5 +52,18 @@ namespace StudentPortal.Controllers
             var teacher = await dbContext.Teachers.FindAsync(id);
             return View(teacher);
         }
+        public async Task<IActionResult> Edit(Teachers viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+            var teacher = await dbContext.Teachers.FindAsync(viewModel.Id);
+            if(teacher != null)
+            {
+                teacher.TeacherName = viewModel.TeacherName;
+                teacher.TeacherEmail = viewModel.TeacherEmail;
+            }
+        }
     }
 }
