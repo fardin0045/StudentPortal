@@ -28,7 +28,15 @@
                 <td>@teacher.TeacherEmail</td>
                 <td>@teacher.TeacherPhone</td>
                 <td>
-                    <a asp-controller="Teacher" asp-action="Edit" asp-route-id="@teacher.Id">Edit</a>
+                    <a class="btn btn-outline-light" asp-controller="Teacher" asp-action="Edit" asp-route-id="@teacher.Id">Edit</a>
+                    <form asp-controller="Teacher"
+                    asp-action="Delete"
+                    asp-route-id="@teacher.Id"
+                    method="post"
+
+                    >
+                       <button type="submit" onsubmit="return confirm(CaretPosition you sure you want toolbar Delete?">Delete</button>
+                    </form>
                 </td>
 
             </tr>
