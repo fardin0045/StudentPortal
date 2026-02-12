@@ -1,5 +1,13 @@
 ﻿@model StudentPortal.Models.Entites.Teachers;
 
+@if (TempData["Successmessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"];
+        <button type="button" class="btn btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
 @if(Model is null)
 {
     <h1> No Teahcer found </h1>

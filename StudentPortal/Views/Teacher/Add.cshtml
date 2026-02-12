@@ -1,9 +1,11 @@
 ﻿@model StudentPortal.Models.AddTeacherViewModel;
 
-@if(TempData["Succesas Message"] != null)
+
+@if (TempData["Successmessage"] != null)
 {
-    <div>
-        @TempData["Success Message"];
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"];
+        <button type="button" class="btn btn-close" data-bs-dismiss="alert"></button>
     </div>
 }
 

@@ -36,7 +36,7 @@ namespace StudentPortal.Controllers
             await dbContext.Teachers.AddAsync(teacher);
             await dbContext.SaveChangesAsync();
 
-            TempData["Success message"] = "Teacher Added Succssfully";
+            TempData["Successmessage"] = "Teacher Added Succssfully";
 
             return RedirectToAction("Add");
         }
@@ -67,7 +67,7 @@ namespace StudentPortal.Controllers
                 teacher.TeacherPhone = viewModel.TeacherPhone;
             }
             await dbContext.SaveChangesAsync();
-            TempData["Success Message"] = "Changed successfully";
+            TempData["Successmessage"] = "Changed successfully";
 
             return RedirectToAction("List", "Teacher");
         }
@@ -80,7 +80,7 @@ namespace StudentPortal.Controllers
                dbContext.Teachers.Remove(teacher);
                await dbContext.SaveChangesAsync();
             }
-            TempData["Success Message"] = "Deleted SuccessFully ";
+            TempData["Successmessage"] = "Deleted SuccessFully ";
 
             return RedirectToAction("List", "Teacher");
             
