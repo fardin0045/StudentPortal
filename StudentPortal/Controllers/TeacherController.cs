@@ -71,5 +71,19 @@ namespace StudentPortal.Controllers
 
             return RedirectToAction("List", "Teacher");
         }
+        public async Task<IActionResult> Delete(Teachers viewModel)
+        {
+            var teacher = await dbContext.Teachers.FindAsync(viewModel.Id);
+            if (teacher != null)
+            {
+
+               dbContext.Teachers.Remove(teacher);
+               await dbContext.SaveChangesAsync();
+            }
+            TempData["Success Message"] = "Deleted SuccessFully ";
+
+            return RedirectToAction("List", "Teacher");
+            
+        }
     }
 }
